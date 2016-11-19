@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>First angular demo</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		
+		<style>
+		.price-form{
+	margin-bottom: 10px;
+	padding: 15px;
+	background-color:#ADD8E6;
+}
+
+.price-form{
+	margin-bottom: 10px;
+	padding: 15px;
+	background-color: #ADD8E6;
+}
+
+.price-form-row{
+	margin-bottom: :10px;
+}
+
+.listing-form-row, .listing-button{
+	margin-top: 10px;
+}
+.listing-form h3{
+	color: white;
+
+}</style>
+	</head>
+	<body ng-app="angular-frontend" ng-controller="frontController" style="background-color:#E9D460">
+		<!--NavBar-->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Sapient Nitro Cart</a>
+				</div>
+			</div>
+		</nav>
+		<div class="container" >
+			<div class="col-sm-12 price-form">
+			
+		<!--Min and MAx Price-->
+		<div class="col-sm-3">
+			<div class="input-group">
+			<span class="input-group-addon">Min Price</span>
+				<select name="minPrice" id="minPrice" ng-model="priceInfo.min" class="form-control">
+					<option value="500">500</option>
+						
+						<option value="1000">1000</option>
+						<option value="2000">2000</option>
+						<option value="2500">2500</option>
+						<option value="3000">3000</option>
+						<option value="3500">3500</option>
+						<option value="5000">5000</option>
+						
+
+				</select>
+			</div>
+		</div>
+		
+		<div class="col-sm-3">
+			<div class="input-group">
+				<span class="input-group-addon">Max Price</span>
+				<select name="maxPrice" id="maxPrice" ng-model="priceInfo.max" class="form-control">
+					<option value="500">500</option>
+						<option value="1000">1000</option>
+						<option value="2000">2000</option>
+						<option value="2500">2500</option>
+						<option value="3000">3000</option>
+						<option value="3500">3500</option>
+						<option value="5000">5000</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-3">
+		
+				<div class="input-group">
+			<!--Search/Filter Box-->
+ <input type="text" ng-model="searchBox" placeholder="filter by:" class="form-control"/>
+</div>
+			</div>
+			
+ 
+<span class="label label-primary">Sort By :</span> Likes: <input type="radio" name="sortOrder" ng-model="sortOrder"  value="rating" />
+Ratings: <input type="radio" name="sortOrder" ng-model="sortOrder" value="likes" />
+
+
+ 
+		
+   </div></div>
+			<div class="container" >
+				<div class="col-sm-4" ng-repeat="fronts in front | pricefilter:priceInfo | filter: searchBox | orderBy : sortOrder">
+					<div class="thumbnail">
+						<img ng-src="images/{{ fronts.image }}.jpeg" alt="">
+						<div class="caption">
+		         <div ng-hide="showDetails === true">
+		         	<h4>{{fronts.name}}</h>
+		         	<h3><i class="icomoon icon-coin"></i>{{fronts.actualprice | currency }}
+		         	</h3>
+		         	<h4><i class="glyphicon glyphicon-tag"></i> {{fronts.tags}}
+		         		<span><br></span>
+		         	<i class="glyphicon glyphicon-star"></i>	{{fronts.rating}}
+		         	</h4>
+		         </div>
+		         <button class=" btn btn-xs btn-success"
+		         			ng-hide="showDetails === true"
+		         			ng-Click="showDetails = !showDetails">
+		         			Details
+		         		</button>
+<button class=" btn btn-xs btn-danger"
+		         			ng-show="showDetails === true"
+		         			ng-Click="showDetails = !showDetails">
+		         		Close
+		         		</button>		         
+
+		         		<div class="details" ng-show="showDetails === true">
+		         			<h4>
+		         				 <i class="glyphicon glyphicon-link"></i> {{fronts.link}}</h4>
+		  <p>       
+		<span class="label label-primary"><i class="glyphicon glyphicon-thumbs-up"></i>
+		         {{fronts.like}}</span>
+		       </p>
+
+    </div>
+   </div>
+   
+</div>
+	</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>	
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>	
+	<script src="app.js"></script>
+	<script src="scripts/frontController.js"></script>
+
+	<script src="scripts/frontfactory.js"></script>
+
+	<script src="scripts/pricefilter.js"></script>
+	</html>
