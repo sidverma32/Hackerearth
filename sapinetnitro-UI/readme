@@ -1,1 +1,21 @@
 
+The folder "sapient" contains:
+1.data folder
+2.index.html file
+3. scripts folder
+4. images(hotel demo)
+5.screenshots
+
+step1: Unzip the folder.
+
+step2: place the folder in xampp->htdocs->sapient(i.e.the folder name here)
+
+step3: start XAMPP server(apache).
+
+step4: Open browser(Mozilla or other) and type url as: localhost/MAD/index.html
+
+step5:page will be displayed
+
+step6: perform various operation like price range and filter .
+
+note: the images(hotel) provided are randomly taken from google,just to show the working of code.
